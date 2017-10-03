@@ -1,4 +1,4 @@
-/*
+
 //BASIC SETUP
 var http = require('http'),
 express  = require('express'),
@@ -7,10 +7,10 @@ parser = require('body-parser');
 
 //DATABASE CONNECTION
 var connection =mysql.createConnection({
-host :'localhost',
-user : 'root',
-password: '',
-database: 'nodejssampledb'
+host :'bptm1x4fq-mysql.services.clever-cloud.com',
+user : 'uyhmiwhhwy0k3tko',
+password: 'Sa80f2ywbdoFZmAPQTX',
+database: 'bptm1x4fq'
 });
 
 try{
@@ -131,11 +131,12 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 	
 });
 
-*/
 
+/*
 var http = require('http');
 var server = http.createServer(function(req, res) {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Hello world!');
 });
 server.listen(process.env.PORT);
+*/
