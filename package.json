@@ -2,6 +2,7 @@
   "name": "geek tutorials",
   "version": "0.0.1",
   "private": true,
+   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
