@@ -132,12 +132,56 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 });
 
 app.post('/technician/signup/',function(req,res){
+	try{
 		
 		var response = {};
 		
 		if( typeof req.body.first_name !='undefined'){
 			if( typeof req.body.last_name !='undefined'){
+				//response={'response' : 'true', 'status' : '1', 'first_name' : req.body.first_name, 'last_name' : req.body.last_name};
 				
+				//INSERT INTO `technician_table`(`first_name`, `last_name`, `mobile_no`, `date_of_birth`, `house_no`, `street`, `city`, `state`, 
+				`pincode`, `created_date`, `created_by`, `updated_date`, `updated_by`),VALUES(?,?,?,?,?,?,?,?,?,?,?)
+				VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12],
+				[value-13],[value-14])
+				connection.query('INSERT INTO technician_table 
+				('first_name', 
+				'last_name', 
+				'mobile_no', 
+				'date_of_birth', 
+				'house_no', 
+				'street', 
+				'city',
+				'state', 
+				'pincode',
+				'created_date', 
+				'created_by')				VALUES(?,?,?,?,?,?,?,?,?,?,?)
+				[req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name,
+				req.body.first_name], function( err, result){
+					
+					if(!err){
+					if(result.affectedRow !=0){
+						response={'response' : 'true', 'status' : '1','message':'Inserted Successfully'};
+					}
+					else {
+						response={'response' : 'true', 'status' : '0','message':'Not Inserted'};
+					}
+					res.setHeader('Content-Type','application/json');
+					res.status(200).send(JSON.stringify(response));
+				}else{
+					res.status(400).send(err);
+				}
+				});
+					
 			}else{
 				response={'response' : 'true', 'status' : '0','message':'Please enter last name'};
 			}
@@ -148,8 +192,8 @@ app.post('/technician/signup/',function(req,res){
 		res.setHeader('Content-Type', 'application/json');
 	    res.status(200).send(JSON.stringify(response));
 		
-	}catch(error){
-		console.log(error);
+	}catch(e){
+		console.log(e);
 	}
 	
 });
