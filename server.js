@@ -148,8 +148,8 @@ app.post('/technician/signup/',function(req,res){
 		res.setHeader('Content-Type', 'application/json');
 	    res.status(200).send(JSON.stringify(response));
 		
-	}catch(error){
-		console.log(error);
+	}catch(e){
+		console.log(e);
 	}
 	
 });
