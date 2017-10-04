@@ -149,20 +149,16 @@ app.post('/technician/signup/',function(req,res){
 				'street', 
 				'city',
 				'state', 
-				'pincode',
-				'created_date', 
-				'created_by') VALUES(?,?,?,?,?,?,?,?,?,?,?)',
+				'pincode') VALUES(?,?,?,?,?,?,?,?,?)',
 				[req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name,
-				req.body.first_name], function( err, result){
+				req.body.last_name,
+				req.body.mobile_no,
+				req.body.date_of_birth,
+				req.body.house_no,
+				req.body.street,
+				req.body.city,
+				req.body.state,
+				req.body.pincode], function( err, result){
 					
 					if(!err){
 					if(result.affectedRow !=0){
