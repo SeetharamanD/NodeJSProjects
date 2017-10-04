@@ -132,6 +132,7 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 });
 
 app.post('/technician/signup/',function(req,res){
+	try{
 		
 		var response = {};
 		
