@@ -138,27 +138,8 @@ app.post('/technician/signup/',function(req,res){
 		
 		if( typeof req.body.first_name !='undefined'){
 			if( typeof req.body.last_name !='undefined'){
-				//response={'response' : 'true', 'status' : '1', 'first_name' : req.body.first_name, 'last_name' : req.body.last_name};
-				
-				connection.query('INSERT INTO technician_table 
-				('first_name', 
-				'last_name', 
-				'mobile_no', 
-				'date_of_birth', 
-				'house_no', 
-				'street', 
-				'city',
-				'state', 
-				'pincode') VALUES(?,?,?,?,?,?,?,?,?)',
-				[req.body.first_name,
-				req.body.last_name,
-				req.body.mobile_no,
-				req.body.date_of_birth,
-				req.body.house_no,
-				req.body.street,
-				req.body.city,
-				req.body.state,
-				req.body.pincode], function( err, result){
+								
+				connection.query('INSERT INTO technician_table ('first_name', 'last_name', 'mobile_no', 'house_no', 'street', 'city', 'state', 'pincode') VALUES(?,?,?,?,?,?,?,?,?)', [req.body.first_name, req.body.last_name, req.body.mobile_no, req.body.date_of_birth, req.body.house_no, req.body.street, req.body.city, req.body.state, req.body.pincode], function( err, result){
 					
 					if(!err){
 					if(result.affectedRow !=0){
