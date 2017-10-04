@@ -131,6 +131,29 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 	
 });
 
+app.post('/technician/signup/',function(req,res){
+		
+		var response = {};
+		
+		if( typeof req.body.first_name !='undefined'){
+			if( typeof req.body.last_name !='undefined'){
+				
+			}else{
+				response={'response' : 'true', 'status' : '0','message':'Please enter last name'};
+			}
+		}else{
+			response={'response' : 'true', 'status' : '0','message':'Please enter first name'};
+		}
+		
+		res.setHeader('Content-Type', 'application/json');
+	    res.status(200).send(JSON.stringify(response));
+		
+	}catch(error){
+		console.log(error);
+	}
+	
+});
+
 
 /*
 var http = require('http');
