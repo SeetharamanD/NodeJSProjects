@@ -151,7 +151,7 @@ app.post('/technician/signup/',function(req,res){
 				'state', 
 				'pincode',
 				'created_date', 
-				'created_by') VALUES(?,?,?,?,?,?,?,?,?,?,?)
+				'created_by') VALUES(?,?,?,?,?,?,?,?,?,?,?)',
 				[req.body.first_name,
 				req.body.first_name,
 				req.body.first_name,
