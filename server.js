@@ -140,10 +140,6 @@ app.post('/technician/signup/',function(req,res){
 			if( typeof req.body.last_name !='undefined'){
 				//response={'response' : 'true', 'status' : '1', 'first_name' : req.body.first_name, 'last_name' : req.body.last_name};
 				
-				//INSERT INTO `technician_table`(`first_name`, `last_name`, `mobile_no`, `date_of_birth`, `house_no`, `street`, `city`, `state`, 
-				`pincode`, `created_date`, `created_by`, `updated_date`, `updated_by`),VALUES(?,?,?,?,?,?,?,?,?,?,?)
-				VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12],
-				[value-13],[value-14])
 				connection.query('INSERT INTO technician_table 
 				('first_name', 
 				'last_name', 
@@ -155,7 +151,7 @@ app.post('/technician/signup/',function(req,res){
 				'state', 
 				'pincode',
 				'created_date', 
-				'created_by')				VALUES(?,?,?,?,?,?,?,?,?,?,?)
+				'created_by') VALUES(?,?,?,?,?,?,?,?,?,?,?)
 				[req.body.first_name,
 				req.body.first_name,
 				req.body.first_name,
