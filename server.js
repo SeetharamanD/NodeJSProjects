@@ -138,7 +138,7 @@ app.post('/technician/signup/',function(req,res){
 		
 		if( typeof req.body.first_name !='undefined'){
 			if( typeof req.body.last_name !='undefined'){
-				response={'first_name':req.body.first_name,'last_name':req.body.last_name};
+				response={'response' : 'true', 'status' : '1', 'first_name' : req.body.first_name, 'last_name' : req.body.last_name};
 			}else{
 				response={'response' : 'true', 'status' : '0','message':'Please enter last name'};
 			}
