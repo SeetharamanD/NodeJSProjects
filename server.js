@@ -131,7 +131,7 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 	
 });
 
-app.post('/technician/signup', function(req,res){
+app.post('/technician/signup', function(req, res){
 		var val_first_name= req.body.first_name;
 		var val_last_name= req.body.last_name;
 		
@@ -140,8 +140,8 @@ app.post('/technician/signup', function(req,res){
 		if( typeof req.body.first_name !='undefined')
 			if( typeof req.body.last_name !='undefined'){
 				connection.query('INSERT INTO login (first_name, last_name) VALUES (?, ?)', 
-			[val_first_name,val_last_name],
-			function(err,result){
+			[val_first_name, val_last_name],
+			function(err, result){
 				if(!err){
 					if(result.affectedRow !=0){
 						response={'result' : 'success'};
