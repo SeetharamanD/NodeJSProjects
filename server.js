@@ -131,49 +131,6 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 	
 });
 
-/*app.post('/technician/signup/',function(req,res){
-	try{
-		
-		var response = {};
-		
-		if( typeof req.body.first_name !='undefined'){
-			if( typeof req.body.last_name !='undefined'){
-								
-				connection.query('INSERT INTO technician_table ('first_name', 'last_name', 'mobile_no', 'house_no', 'street', 'city', 'state', 'pincode') VALUES(?,?,?,?,?,?,?,?,?)', [req.body.first_name, req.body.last_name, req.body.mobile_no, req.body.date_of_birth, req.body.house_no, req.body.street, req.body.city, req.body.state, req.body.pincode], function( err, result){
-					
-					if(!err){
-					if(result.affectedRow !=0){
-						response={'response' : 'true', 'status' : '1','message':'Inserted Successfully'};
-					}
-					else {
-						response={'response' : 'true', 'status' : '0','message':'Not Inserted'};
-					}
-					res.setHeader('Content-Type','application/json');
-					res.status(200).send(JSON.stringify(response));
-				}else{
-					res.status(400).send(err);
-				}
-				});
-					
-			}else{
-				response={'response' : 'true', 'status' : '0','message':'Please enter last name'};
-			}
-		}else{
-			response={'response' : 'true', 'status' : '0','message':'Please enter first name'};
-		}
-		
-		res.setHeader('Content-Type', 'application/json');
-	    res.status(200).send(JSON.stringify(response));
-		
-	}catch(e){
-		console.log(e);
-	}
-	
-});
-
-*/
-
-
 app.post('/technician/signup', function(req,res){
 		var val_first_name= req.body.first_name;
 		var val_last_name= req.body.last_name;
