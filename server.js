@@ -131,7 +131,7 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 	
 });
 
-app.post('/technician/signup/',function(req,res){
+/*app.post('/technician/signup/',function(req,res){
 	try{
 		
 		var response = {};
@@ -171,6 +171,46 @@ app.post('/technician/signup/',function(req,res){
 	
 });
 
+*/
+
+
+app.post('/technician/signup', function(req,res){
+		var val_first_name= req.body.first_name;
+		var val_last_name= req.body.last_name;
+		
+		var response={};
+		
+		if( typeof req.body.first_name !='undefined')
+			if( typeof req.body.last_name !='undefined'){
+				connection.query('INSERT INTO login (first_name, last_name) VALUES (?, ?)', 
+			[val_first_name,val_last_name],
+			function(err,result){
+				if(!err){
+					if(result.affectedRow !=0){
+						response={'result' : 'success'};
+					}
+					else {
+						response={'msg': 'No Result Found'};
+					}
+					res.setHeader('Content-Type','application/json');
+					res.status(200).send(JSON.stringify(response));
+				}else{
+					res.status(400).send(err);
+				}
+			});
+			}
+			else
+				response={'respnse' : 'LAST NAME MISSING'};
+				else
+					response={'respnse' : 'FIRST NAME MISSING'};
+				
+
+			res.setHeader('Content-Type', 'application/json');
+			res.status(200).send(JSON.stringify(response));	
+
+	
+	
+});
 
 /*
 var http = require('http');
