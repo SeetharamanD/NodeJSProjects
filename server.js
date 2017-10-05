@@ -149,8 +149,7 @@ app.post('/technician/signup', function(req, res){
 					else {
 						response={'msg': 'No Result Found'};
 					}
-					res.setHeader('Content-Type','application/json');
-					res.status(200).send(JSON.stringify(response));
+					
 				}else{
 					res.status(400).send(err);
 				}
