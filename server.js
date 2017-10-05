@@ -4,6 +4,13 @@ var http = require('http'),
 express  = require('express'),
 mysql = require('mysql'),
 parser = require('body-parser');
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: '84a83e60',
+  apiSecret: 'd95d8b612879cce0'
+});
+
+
 
 //DATABASE CONNECTION
 var connection =mysql.createConnection({
@@ -165,6 +172,30 @@ app.post('/technician/signup', function(req, res){
 			res.status(200).send(JSON.stringify(response));	
 
 	
+	
+});
+
+app.post('/SendOTP', function(req,res){
+
+var frm = req.body.from_company;
+var to = req.body.to_mobile_no;
+var txt = req.body.sms_content;
+
+var response = {};
+
+nexmo.message.sendSms(
+  frm, to, txt, {type: 'unicode'},
+    (err, responseData) => {
+      if (err) {
+        response={'message': 'FAILURE'};
+      } else {
+       response={'message': 'SUCCESS'};
+      }
+		res.setHeader('Content-Type','application/json');
+		res.status(200).send(JSON.stringify(response));
+    }
+ );
+
 	
 });
 
