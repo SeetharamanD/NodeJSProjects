@@ -138,42 +138,103 @@ app.get('/user/getSingleUserDetailsByID/:id', function(req, res){
 	
 });
 
-app.post('/technician/signup', function(req, res){
-		var val_first_name= req.body.first_name;
-		var val_last_name= req.body.last_name;
-		
-		var response={};
-		
-		if( typeof req.body.first_name !='undefined')
-			if( typeof req.body.last_name !='undefined'){
-				connection.query('INSERT INTO login (first_name, last_name) VALUES (?, ?)', 
-			[val_first_name, val_last_name],
-			function(err, result){
-				if(!err){
-					if(result.affectedRow !=0){
-						response={'result' : 'success'};
-					}
-					else {
-						response={'msg': 'No Result Found'};
-					}
-					
-				}else{
-					res.status(400).send(err);
-				}
-			});
-			}
-			else
-				response={'respnse' : 'LAST NAME MISSING'};
-				else
-					response={'respnse' : 'FIRST NAME MISSING'};
-				
-
-			res.setHeader('Content-Type', 'application/json');
-			res.status(200).send(JSON.stringify(response));	
-
+app.post('/technician/signup', function(req,res){
+		var response = {};
 	
+			if( typeof req.body.first_name !='undefined' ){
+				
+				if(typeof req.body.last_name !='undefined'){
+					
+					if(typeof req.body.mobile_no !='undefined'){
+						
+						if(typeof req.body.house_no !='undefined'){
+							
+							if(typeof req.body.street !='undefined'){
+								
+								if(typeof req.body.city !='undefined'){
+								
+									if(typeof req.body.state !='undefined'){
+										
+										if(typeof req.body.pincode !='undefined'){
+											
+											var val_first_name= req.body.first_name;
+											var val_last_name= req.body.last_name;
+											var val_mobile_no= req.body.mobile_no;
+											var val_house_no= req.body.house_no;
+											var val_street= req.body.street;
+											var val_city= req.body.city;
+											var val_state= req.body.state;
+											var val_pincode= req.body.pincode;
+											
+										connection.query('INSERT INTO technician_table (first_name, last_name, mobile_no, house_no, street, city, state, pincode,created_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', [val_first_name, val_last_name, val_mobile_no, val_house_no, val_street, val_city, val_state, val_pincode, new Date()],
+												function(err,result){
+													if(!err){
+														if(result.affectedRow !=0){
+															response={'result' : 'success'};
+														}
+														else {
+															response={'msg': 'No Result Found'};
+														}
+														res.setHeader('Content-Type','application/json');
+														res.status(200).send(JSON.stringify(response));
+													}else{
+														res.status(400).send(err);
+													}
+												});
+										}else{
+											response={'message': 'Please Enter pincode'};
+										}
+									}else{
+										response={'message': 'Please Enter state'};
+									}
+								}else{
+										response={'message': 'Please Enter city'};
+								}
+							}else{
+									response={'message': 'Please Enter street'};
+							}
+						}else{
+								response={'message': 'Please Enter house no'};
+						}
+					}else{
+							response={'message': 'Please Enter mobile no'};
+					}
+				}else{
+					response={'message': 'Please Enter last name'};
+				}
+			}else{
+					response={'message': 'Please Enter first name'};
+			}
+			
+			res.setHeader('Content-Type','application/json');
+			res.status(200).send(JSON.stringify(response));
 	
 });
+
+app.post('/SendOTP', function(req,res){
+
+var frm = req.body.from_company;
+var to = req.body.to_mobile_no;
+var txt = req.body.sms_content;
+
+var response = {};
+
+nexmo.message.sendSms(
+  frm, to, txt, {type: 'unicode'},
+    (err, responseData) => {
+      if (err) {
+        response={'message': 'FAILURE'};
+      } else {
+       response={'message': 'SUCCESS'};
+      }
+		res.setHeader('Content-Type','application/json');
+		res.status(200).send(JSON.stringify(response));
+    }
+ );
+
+	
+});
+
 
 /*
 var http = require('http');
