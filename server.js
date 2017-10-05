@@ -175,30 +175,6 @@ app.post('/technician/signup', function(req, res){
 	
 });
 
-app.post('/SendOTP', function(req,res){
-
-var frm = req.body.from_company;
-var to = req.body.to_mobile_no;
-var txt = req.body.sms_content;
-
-var response = {};
-
-nexmo.message.sendSms(
-  frm, to, txt, {type: 'unicode'},
-    (err, responseData) => {
-      if (err) {
-        response={'message': 'FAILURE'};
-      } else {
-       response={'message': 'SUCCESS'};
-      }
-		res.setHeader('Content-Type','application/json');
-		res.status(200).send(JSON.stringify(response));
-    }
- );
-
-	
-});
-
 /*
 var http = require('http');
 var server = http.createServer(function(req, res) {
