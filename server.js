@@ -5,9 +5,14 @@ express  = require('express'),
 mysql = require('mysql'),
 parser = require('body-parser');
 const Nexmo = require('nexmo');
+// const nexmo = new Nexmo({
+//   apiKey: '84a83e60',
+//   apiSecret: 'd95d8b612879cce0'
+// });
+
 const nexmo = new Nexmo({
-  apiKey: '84a83e60',
-  apiSecret: 'd95d8b612879cce0'
+  apiKey: '97f6ee96',
+  apiSecret: '8004ec4a0971ab74'
 });
 
 
