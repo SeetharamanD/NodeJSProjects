@@ -272,6 +272,9 @@ var message = {
         } else {
             response={'message': 'Successfully sent'};
         }
+	  
+	  res.setHeader('Content-Type','application/json');
+	  res.status(200).send(JSON.stringify(response));
     });
 	
 });
