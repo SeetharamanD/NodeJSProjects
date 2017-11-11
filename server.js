@@ -249,7 +249,7 @@ var serverKey = 'AAAASlRe5-o:APA91bHfQzANeXQA8wNfczkhz97SGEA6sWJKL6LyVH6pRCJXB4L
 var fcm = new FCM(serverKey);
 
 
-app.post('/PushNotification, function(req,res){
+app.post('/PushNotification', function(req,res){
 
 var message = {
     to: 'registration_token_or_topics', // required fill with device token or topics
