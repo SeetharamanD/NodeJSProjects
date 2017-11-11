@@ -252,7 +252,7 @@ var fcm = new FCM(serverKey);
 app.post('/PushNotification', function(req,res){
 
 var message = {
-    to: 'registration_token_or_topics', // required fill with device token or topics
+    to: req.body.device_token, // required fill with device token or topics
     collapse_key: 'your_collapse_key', 
     data: {
         your_custom_data_key: 'your_custom_data_value'
