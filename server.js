@@ -254,7 +254,7 @@ app.post('/PushNotification', function(req,res){
 var response = {};
 
 var message = {
-    to: req.body.device_token;, // required fill with device token or topics
+    to: req.body.device_token, // required fill with device token or topics
     collapse_key: 'your_collapse_key', 
     data: {
         your_custom_data_key: 'your_custom_data_value'
