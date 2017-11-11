@@ -5,15 +5,15 @@ express  = require('express'),
 mysql = require('mysql'),
 parser = require('body-parser');
 const Nexmo = require('nexmo');
-// const nexmo = new Nexmo({
-//   apiKey: '84a83e60',
-//   apiSecret: 'd95d8b612879cce0'
-// });
-
 const nexmo = new Nexmo({
-  apiKey: '97f6ee96',
-  apiSecret: '8004ec4a0971ab74'
+  apiKey: '84a83e60',
+  apiSecret: 'd95d8b612879cce0'
 });
+
+// const nexmo = new Nexmo({
+//   apiKey: '97f6ee96',
+//   apiSecret: '8004ec4a0971ab74'
+// });
 
 
 
@@ -239,6 +239,46 @@ nexmo.message.sendSms(
 
 	
 });
+
+/* Firebase Notification*/
+
+var FCM = require('fcm-push');
+
+
+var serverKey = 'AAAASlRe5-o:APA91bHfQzANeXQA8wNfczkhz97SGEA6sWJKL6LyVH6pRCJXB4LhqnkBowgas-sDaG93wMVV9b76ZCxMacGhUgPtxTqQYH10u9n7g_U9sPebaz_xzmPrPREziUv8_O5lMO7RvsVt639U';
+var fcm = new FCM(serverKey);
+
+
+app.post('/PushNotification, function(req,res){
+
+var message = {
+    to: 'registration_token_or_topics', // required fill with device token or topics
+    collapse_key: 'your_collapse_key', 
+    data: {
+        your_custom_data_key: 'your_custom_data_value'
+    },
+    notification: {
+        title: 'Title of your push notification',
+        body: 'Body of your push notification'
+    }
+};
+
+
+  fcm.send(message, function(err, response){
+        if (err) {
+            console.log("Something has gone wrong!")
+        } else {
+            console.log("Successfully sent with response: ", response)
+        }
+    });
+	
+});
+
+
+
+
+
+
 
 
 /*
