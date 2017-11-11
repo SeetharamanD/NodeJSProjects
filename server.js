@@ -251,8 +251,10 @@ var fcm = new FCM(serverKey);
 
 app.post('/PushNotification', function(req,res){
 
+var response = {};
+
 var message = {
-    to: req.body.device_token, // required fill with device token or topics
+    to: req.body.device_token;, // required fill with device token or topics
     collapse_key: 'your_collapse_key', 
     data: {
         your_custom_data_key: 'your_custom_data_value'
@@ -266,9 +268,9 @@ var message = {
 
   fcm.send(message, function(err, response){
         if (err) {
-            console.log("Something has gone wrong!")
+            response={'message': 'Something has gone wrong!'};
         } else {
-            console.log("Successfully sent with response: ", response)
+            response={'message': 'Successfully sent'};
         }
     });
 	
